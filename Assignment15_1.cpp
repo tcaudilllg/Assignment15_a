@@ -9,8 +9,42 @@
 
 using namespace std;
 
+char character(char start, int offset)
+{
+
+	exception invalidCharacterException, invalidRangeException;
+
+	if ((start < 'A') || (start > 'Z' && start < 'a') || (start > 'z'))
+	{
+		throw invalidCharacterException;
+	}
+
+	char letter = start + offset;
+
+	if ((letter < 'A') || (letter > 'Z' && letter < 'a') || (letter > 'z'))
+	{
+		throw invalidRangeException;
+	}
+	else
+	if ((start >= 'A' && start <= 'Z') && (letter >= 'a'))
+	{
+		throw invalidRangeException;
+	}
+	else
+	if ((start >= 'a') && (letter < 'a'))
+	{
+		throw invalidRangeException;
+	}
+
+
+	return letter;
+}
+
+
 int main()
 {
+
+
 
 
 
