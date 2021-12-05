@@ -44,7 +44,15 @@ char character(char start, int offset)
 int main()
 {
 
+	try {
 
+		character(65, 44);
+	}
+	catch (int e)
+	{
+
+
+	}
 
 
 
