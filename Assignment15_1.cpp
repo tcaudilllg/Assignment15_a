@@ -6,12 +6,12 @@
 //
 
 #include <iostream>
-#include <stdexcept>
+
 
 using namespace std;
 
-const int INVALID_CHARACTER_EXCEPTION = 1;
-const int INVALID_RANGE_EXCEPTION = 2;
+//const int INVALID_CHARACTER_EXCEPTION = 1;
+//const double INVALID_RANGE_EXCEPTION = 2;
 
 /*  THIS WAS NOT ACCEPTED BY VC++
 class except {
@@ -24,28 +24,31 @@ public:
 char character(char start, int offset)
 {
 
+	int invalidCharException = 0;
+	double invalidRangeException = 0;
+
 	//int invalidCharacterException = 0, invalidRangeException = 0;
 
 	if ((start < 'A') || (start > 'Z' && start < 'a') || (start > 'z'))
 	{
-		throw INVALID_CHARACTER_EXCEPTION;
+		throw invalidCharException;
 	}
 
 	char letter = start + offset;
 
 	if ((letter < 'A') || (letter > 'Z' && letter < 'a') || (letter > 'z'))
 	{
-		throw INVALID_RANGE_EXCEPTION;
+		throw invalidRangeException;
 	}
 	else
 	if ((start >= 'A' && start <= 'Z') && (letter >= 'a'))
 	{
-	     throw INVALID_RANGE_EXCEPTION;
+	     throw invalidRangeException;
 	}
 	else
 	if ((start >= 'a') && (letter < 'a'))
 	{
-		throw INVALID_RANGE_EXCEPTION;
+		throw invalidRangeException;
 	}
 
 
@@ -62,15 +65,11 @@ int main()
 	}
 	catch (int e)
 	{
-		if (e == INVALID_CHARACTER_EXCEPTION)
-		{
 			cout << "Invalid char reported.";
-		}
-		if (e == INVALID_RANGE_EXCEPTION)
-		{
-			cout << "Invalid range reported.";
-		}
-		
+	}
+	catch (double e)
+	{
+		cout << "Invalid range reported.";
 	}
 
 
@@ -80,15 +79,11 @@ int main()
 	}
 	catch (int e)
 	{
-		if (e == INVALID_CHARACTER_EXCEPTION)
-		{
-			cout << "Invalid char reported.";
-		}
-		if (e == INVALID_RANGE_EXCEPTION)
-		{
-			cout << "Invalid range reported.";
-		}
-
+		cout << "Invalid char reported.";
+	}
+	catch (double e)
+	{
+		cout << "Invalid range reported.";
 	}
 
 	try {
@@ -97,15 +92,11 @@ int main()
 	}
 	catch (int e)
 	{
-		if (e == INVALID_CHARACTER_EXCEPTION)
-		{
-			cout << "Invalid char reported.";
-		}
-		if (e == INVALID_RANGE_EXCEPTION)
-		{
-			cout << "Invalid range reported.";
-		}
-
+		cout << "Invalid char reported.";
+	}
+	catch (double e)
+	{
+		cout << "Invalid range reported.";
 	}
 
 	try {
@@ -114,15 +105,11 @@ int main()
 	}
 	catch (int e)
 	{
-		if (e == INVALID_CHARACTER_EXCEPTION)
-		{
-			cout << "Invalid char reported.";
-		}
-		if (e == INVALID_RANGE_EXCEPTION)
-		{
-			cout << "Invalid range reported.";
-		}
-
+		cout << "Invalid char reported.";
+	}
+	catch (double e)
+	{
+		cout << "Invalid range reported.";
 	}
 
 
