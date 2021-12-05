@@ -6,32 +6,46 @@
 //
 
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
+
+const int INVALID_CHARACTER_EXCEPTION = 1;
+const int INVALID_RANGE_EXCEPTION = 2;
+
+/*  THIS WAS NOT ACCEPTED BY VC++
+class except {
+public:
+	class invalidCharacterException {};
+	class invalidRangeException {};
+};
+*/
 
 char character(char start, int offset)
 {
 
+	//int invalidCharacterException = 0, invalidRangeException = 0;
+
 	if ((start < 'A') || (start > 'Z' && start < 'a') || (start > 'z'))
 	{
-		throw "invalidCharacterException";
+		throw INVALID_CHARACTER_EXCEPTION;
 	}
 
 	char letter = start + offset;
 
 	if ((letter < 'A') || (letter > 'Z' && letter < 'a') || (letter > 'z'))
 	{
-		throw "invalidRangeException";
+		throw INVALID_RANGE_EXCEPTION;
 	}
 	else
 	if ((start >= 'A' && start <= 'Z') && (letter >= 'a'))
 	{
-		throw "invalidRangeException";
+	     throw INVALID_RANGE_EXCEPTION;
 	}
 	else
 	if ((start >= 'a') && (letter < 'a'))
 	{
-		throw "invalidRangeException";
+		throw INVALID_RANGE_EXCEPTION;
 	}
 
 
@@ -48,10 +62,68 @@ int main()
 	}
 	catch (int e)
 	{
+		if (e == INVALID_CHARACTER_EXCEPTION)
+		{
+			cout << "Invalid char reported.";
+		}
+		if (e == INVALID_RANGE_EXCEPTION)
+		{
+			cout << "Invalid range reported.";
+		}
+		
+	}
 
+
+	try {
+
+		character(97, -20);
+	}
+	catch (int e)
+	{
+		if (e == INVALID_CHARACTER_EXCEPTION)
+		{
+			cout << "Invalid char reported.";
+		}
+		if (e == INVALID_RANGE_EXCEPTION)
+		{
+			cout << "Invalid range reported.";
+		}
 
 	}
 
+	try {
+
+		character(65, -1);
+	}
+	catch (int e)
+	{
+		if (e == INVALID_CHARACTER_EXCEPTION)
+		{
+			cout << "Invalid char reported.";
+		}
+		if (e == INVALID_RANGE_EXCEPTION)
+		{
+			cout << "Invalid range reported.";
+		}
+
+	}
+
+	try {
+
+		character(45, 231);
+	}
+	catch (int e)
+	{
+		if (e == INVALID_CHARACTER_EXCEPTION)
+		{
+			cout << "Invalid char reported.";
+		}
+		if (e == INVALID_RANGE_EXCEPTION)
+		{
+			cout << "Invalid range reported.";
+		}
+
+	}
 
 
 }
